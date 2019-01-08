@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { UsersService } from 'src/users.service';
+
 import { ActivatedRoute, Router } from "@angular/router";
+import { UsersService } from '../../../users.service';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
 })
+export class TableComponent implements OnInit {
 
-export class AppComponent {
-  
   first_name;
   address;
   city;
@@ -66,3 +67,5 @@ getUsers(){
   }
 
 }
+
+
