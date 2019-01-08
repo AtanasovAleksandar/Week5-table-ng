@@ -20,7 +20,6 @@ export class TableComponent implements OnInit {
   userAddress
   userCity
   userPinCode
-
   users = [];
   user = { 'id': '', 'first_name': '', 'address': '', 'city': '', 'pincode': '' }
   newObject: any;
