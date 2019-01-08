@@ -15,9 +15,6 @@ const appRouters: Routes = [
   {path: '**' , redirectTo: "Users" , pathMatch:'full'}
 ] 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
