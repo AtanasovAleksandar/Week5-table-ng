@@ -1,3 +1,13 @@
+<div class="row">
+  <nav class="navbar navbar-light bg-light col-md-12">
+      <a class="navbar-brand float-left" href="#">Customer Details</a>
+      <form class="form-inline float-right">
+        <input class="form-control m-sm-2" [(ngModel)]="search" name="Search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+      </form>
+    </nav>
+    </div>
+
 <div class="container">
   <main class="table row">
     <table class="table">
@@ -13,7 +23,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let person of users; let i = index">
-          <th>{{person.id}}</th>
+          <th>{{i + 1}}</th>
           <td>{{person.first_name}}</td>
           <td>{{person.address}}</td>
           <td>{{person.city}}</td>
@@ -38,7 +48,7 @@
     <form id="myForm" class="col-md-12">
       <div class="form-row">
         <div class="col-md-6">
-          <input type="text" [(ngModel)]="name" name="Name" class="form-control" placeholder="Name">
+          <input type="text" [(ngModel)]="first_name" name="Name" class="form-control" placeholder="Name">
         </div>
         <div class="col-md-6">
           <input type="text" [(ngModel)]="address" name="Address" class="form-control" placeholder="Address">

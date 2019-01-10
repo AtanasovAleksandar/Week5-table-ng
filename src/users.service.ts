@@ -7,15 +7,20 @@ import { HttpClient } from "@angular/common/http";
 })
 export class UsersService {
 
-  apiUrl = 'assets/data/users-data.json';
-  currentPage = 1;
-
+  dataUrl = 'http://localhost:3000/users';
+ 
   constructor(private http: HttpClient) { }
 
-
   getCustomers(): Observable<any> {
-    return this.http.get(this.apiUrl)
+    return this.http.get(this.dataUrl)
   }
 
- 
+  addNewCustomer(newUser): Observable<any> {
+    return this.http.post(this.dataUrl , newUser)
+  }
+
+
+  searchValue(search) {
+    return this.http.get(this.dataUrl + '?q=' + search);
+  }
 }
