@@ -11,26 +11,18 @@ import { UsersService } from '../../../users.service';
 })
 export class TableComponent {
 
-  first_name: String;
-  address: String;
-  city: String;
-  pinCode: String;
-  
   userId:any;
-
-  userName: any;
-  userAddress: any;
-  userCity: any;
-  userPinCode: any;
-  users = [];
-  user = { 'id': '', 'first_name': '', 'address': '', 'city': '', 'pincode': '' }
-  newObject: any;
+  users: any = [];
   object: any;
   index;
   search: any;
+  userClicked: any;
+  getUser: any;
 
-  constructor(public userService: UsersService) {
-    this.getUsers()
+  constructor(public userService: UsersService,
+    public activeRouter: ActivatedRoute,
+    public router: Router) {
+    this.getUsers() 
   }
 
   getUsers() {
@@ -43,41 +35,16 @@ export class TableComponent {
     )
   }
  
-
-  addUser() {
-    this.userName = this.first_name;
-    this.userAddress = this.address;
-    this.userCity = this.city;
-    this.userPinCode = this.pinCode;
-
-    this.user.id = this.userId
-    this.user.first_name = this.userName;
-    this.user.address = this.userAddress
-    this.user.city = this.userCity;
-    this.user.pincode = this.userPinCode;
-
-    this.newObject = Object.assign({}, this.user)
-
-    this.userService.addNewCustomer(this.newObject).subscribe ( data => {
-      console.log("data");
-    })
-    
-    
-    this.first_name = '';
-    this.address = '';
-    this.city = '';
-    this.pinCode = '';
-  }
-  
-
   searchUsers() {
-    this.userService.searchValue(this.search).subscribe()
+    this.userService.searchValue(this.search).subscribe(
+      data => {
+        console.log(data);
+        this.users = data;
+      }
+    )
   }
 
-  editUser() {
-
-  }
-
+  
 }
 
 

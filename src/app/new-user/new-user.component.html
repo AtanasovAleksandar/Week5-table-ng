@@ -1,0 +1,27 @@
+<div class="add-customers row">
+  <form id="myForm" class="col-md-12">
+    <div class="form-row">
+      <div class="col-md-6">
+        <input type="text" [(ngModel)]="first_name" name="Name" class="form-control" placeholder="Name">
+      </div>
+      <div class="col-md-6">
+        <input type="text" [(ngModel)]="address" name="Address" class="form-control" placeholder="Address">
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="text" [(ngModel)]="city" name="City" class="form-control" placeholder="City">
+        </div>
+        <div class="col-md-6">
+          <input type="text" [(ngModel)]="pinCode" name="PinCode" class="form-control" placeholder="Pin Code">
+        </div>
+      </div>
+      <div class="dropdown-menu col-md-6" aria-labelledby="dropdownMenuOffset">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="addUser()">Submite</button>
+    <button class="btn btn-primary" [routerLink]="['/Users']">Go Back</button>
+  </form>
+</div>

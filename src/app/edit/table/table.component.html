@@ -1,15 +1,17 @@
 <div class="row">
   <nav class="navbar navbar-light bg-light col-md-12">
-      <a class="navbar-brand float-left" href="#">Customer Details</a>
-      <form class="form-inline float-right">
-        <input class="form-control m-sm-2" [(ngModel)]="search" name="Search" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
-      </form>
-    </nav>
-    </div>
+    <a class="navbar-brand float-left" href="#">Customer Details</a>
+    <form class="form-inline float-right">
+      <input class="form-control mr-sm-2" [(ngModel)]="search" name="Search" type="search" placeholder="Search"
+        aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchUsers()" type="button">Search</button>
+    </form>
+  </nav>
+</div>
 
 <div class="container">
   <main class="table row">
+    <button class="btn btn-primary" [routerLink]="[ '/Users/Add']"> Add New User</button>
     <table class="table">
       <thead>
         <tr>
@@ -22,54 +24,25 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let person of users; let i = index">
-          <th>{{i + 1}}</th>
+        <tr *ngFor="let person of users | paginate: { itemsPerPage: 10, currentPage: p }; let i = index ">
+          <th>{{person.id}}</th>
           <td>{{person.first_name}}</td>
           <td>{{person.address}}</td>
           <td>{{person.city}}</td>
           <td>{{person.pincode}}</td>
-          <td><span><i class="far fa-eye"></i></span> <span><i [routerLink]="['Edit', person.id]" class="fas fa-user-edit"></i></span>
-            <i class="fas fa-trash-alt"></i><span></span>
+          <td>
+             <span><i [routerLink]="['/Users/Detail/', person.id]" class="far fa-eye"></i></span>
+             <span><i [routerLink]="['Edit', person.id]" class="fas fa-user-edit"></i></span>
+             <span><i [routerLink]="['Edit', person.id]" class="fas fa-trash-alt"></i></span>
           </td>
         </tr>
       </tbody>
     </table>
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </ul>
     </nav>
   </main>
-  <div class="add-customers row">
-    <form id="myForm" class="col-md-12">
-      <div class="form-row">
-        <div class="col-md-6">
-          <input type="text" [(ngModel)]="first_name" name="Name" class="form-control" placeholder="Name">
-        </div>
-        <div class="col-md-6">
-          <input type="text" [(ngModel)]="address" name="Address" class="form-control" placeholder="Address">
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <input type="text" [(ngModel)]="city" name="City" class="form-control" placeholder="City">
-          </div>
-          <div class="col-md-6">
-            <input type="text" [(ngModel)]="pinCode" name="PinCode" class="form-control" placeholder="Pin Code">
-          </div>
-        </div>
-        <div class="dropdown-menu col-md-6" aria-labelledby="dropdownMenuOffset">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
-      <button class="btn btn-primary" (click)="addUser()">Submite</button>
-      <button type="button" class="btn btn-danger" (click)="editUser()"> Change</button>
-    </form>
-  </div>
 
 </div>
