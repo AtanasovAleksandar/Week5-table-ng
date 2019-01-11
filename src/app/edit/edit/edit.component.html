@@ -1,23 +1,23 @@
-<div class="add-customers row">
-    <form id="myForm" class="col-md-12">
-      <div class="form-row">
-        <div class="col-md-6">
-          <input type="text" [(ngModel)]="first_name" name="Name" class="form-control" placeholder="Name">
-        </div>
-        <div class="col-md-6">
-          <input type="text" [(ngModel)]="address" name="Address" class="form-control" placeholder="Address">
-        </div>
-        <div class="row col-md-12">
-          <div class="col-md-6">
-            <input type="text" [(ngModel)]="city" name="City" class="form-control" placeholder="City">
-          </div>
-          <div class="col-md-6">
-            <input type="text" [(ngModel)]="pincode" name="PinCode" class="form-control" placeholder="Pin Code">
-          </div>
-        </div>
+<div class="edit row">
+  <form id="myForm" class="col-md-12">
+    <div class="form-row">
+      <div class="col-md-12">
+        <input type="text" [(ngModel)]="first_name" name="Name" class="form-control" placeholder="Name">
       </div>
-      <button class="btn btn-primary" (click)="updateUserChanges()">Submite</button>
+      <div class="col-md-12">
+        <input type="text" [(ngModel)]="address" name="Address" class="form-control" placeholder="Address">
+      </div>     
+        <div class="col-md-12">
+          <input type="text" [(ngModel)]="city" name="City" class="form-control" placeholder="City">
+        </div>
+        <div class="col-md-12">
+          <input type="text" [(ngModel)]="pincode" name="PinCode" class="form-control" placeholder="Pin Code">
+        </div>
+    </div>
+    <div class="edit-buttons">
+      <button class="btn btn-success" (click)="updateUserChanges()">Save change</button>
       <button class="btn btn-primary" [routerLink]="['/Users']">Go Back</button>
       <button class="btn btn-danger float-right" (click)="deleteUser()">Delete</button>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,26 @@
+$primary-color: #c4fac4;
+
+.new-customer {
+    h2 {
+        text-align: center;
+    }
+
+    &-form {
+        margin: 50px 120px;
+
+        &-text-fild {
+            margin-bottom: 5px;
+        }
+    }
+
+    &-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    &-buttons button {
+        margin-left:10px;
+    }
+}

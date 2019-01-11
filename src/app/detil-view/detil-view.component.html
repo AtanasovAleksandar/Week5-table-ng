@@ -1,14 +1,16 @@
-<div class="card" style="width: 40rem;">
-    <div class="card-body">
-      <h5 class="card-title">Detail View</h5>
-      <p class="card-text">Name: {{getUserClicked.first_name}}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Address: {{getUserClicked.address}}</li>
-      <li class="list-group-item">City: {{getUserClicked.city}}</li>
-      <li class="list-group-item">Pin Code: {{getUserClicked.pincode}}</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link" [routerLink]="[ '/Users']">Go Back</a>
-    </div>
-  </div>
+<div class="main">
+    <div class="card main-card col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">Detail View</h5>
+          <p class="card-text card-body-text">Name: {{getUserClicked.first_name}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Address: {{getUserClicked.address}}</li>
+          <li class="list-group-item">City: {{getUserClicked.city}}</li>
+          <li class="list-group-item">Pin Code: {{getUserClicked.pincode}}</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link card-body-card-link" [routerLink]="[ '/Users']">Go Back</a>
+        </div>
+      </div>
+</div>

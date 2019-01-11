@@ -1,0 +1,13 @@
+.edit {
+    margin: 25px 30px;
+
+    &-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    }
+
+    &-buttons button {
+        margin-top: 10px;
+    }
+}
