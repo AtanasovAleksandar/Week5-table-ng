@@ -4,7 +4,7 @@
     <form class="form-inline float-right">
       <input class="form-control mr-sm-2" [(ngModel)]="search" name="Search" type="search" placeholder="Search"
         aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchUsers()" type="button">Search</button>
+      <!-- <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchUsers()" type="button">Search</button> -->
     </form>
   </nav>
 </div>
@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let person of users | paginate: { itemsPerPage: 10, currentPage: p }; let i = index ">
+        <tr *ngFor="let person of users |filter:search | paginate: { itemsPerPage: 10, currentPage: p } let i = index ">
           <th>{{person.id}}</th>
           <td>{{person.first_name}}</td>
           <td>{{person.address}}</td>

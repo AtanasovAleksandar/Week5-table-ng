@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppComponent } from './app.component';
 import { EditComponent } from './edit/edit/edit.component';
@@ -33,6 +34,7 @@ const appRouters: Routes = [
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule,
     RouterModule.forRoot(appRouters),
 
   ],

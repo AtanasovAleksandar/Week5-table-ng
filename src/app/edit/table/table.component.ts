@@ -34,15 +34,15 @@ export class TableComponent {
       }
     )
   }
- 
-  searchUsers() {
-    this.userService.searchValue(this.search).subscribe(
-      data => {
-        console.log(data);
-        this.users = data;
-      }
-    )
-  }
+//  PEBARUVANJE NIS BAZATA SO RUTER
+  // searchUsers() {
+  //   this.userService.searchValue(this.search).subscribe(
+  //     data => {
+  //       console.log(data);
+  //       this.users = data;
+  //     }
+  //   )
+  // }
 
   
 }
