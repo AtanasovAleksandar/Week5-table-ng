@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DetilViewComponent implements OnInit {
   userClicked: any;
   getUserClicked: any;
+  getUsers: any;
 
   constructor(public userService: UsersService,
     public activeRouter: ActivatedRoute,
@@ -30,9 +31,15 @@ export class DetilViewComponent implements OnInit {
   getUser() {
     this.userService.getCustomers().subscribe(
       data => {
-        console.log(data[this.userClicked]);
-        this.getUserClicked = data[this.userClicked-1];
+        this.getUsers = data;
         console.log(this.getUserClicked)
+        for (var i = 1; i < this.getUsers.length; i++) {
+          let id = i-1;
+           if (this.getUsers[i].id == this.userClicked) {
+             this.getUserClicked = this.getUsers[i];
+           }
+         }
+         console.log(this.getUserClicked)
       })
   }
 }

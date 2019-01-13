@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 import { ActivatedRoute, Router } from "@angular/router";
 import { UsersService } from '../../../users.service';
+import { EditComponent } from '../edit/edit.component'
+  import { from } from 'rxjs';
 
 
 @Component({
@@ -11,7 +13,7 @@ import { UsersService } from '../../../users.service';
 })
 export class TableComponent {
 
-  userId:any;
+  userId: any;
   users: any = [];
   object: any;
   index;
@@ -22,19 +24,34 @@ export class TableComponent {
   constructor(public userService: UsersService,
     public activeRouter: ActivatedRoute,
     public router: Router) {
-    this.getUsers() 
+      // if (this.userService.newData !== undefined) {
+      //  this.userService.newData.subscribe(
+      //    data => {
+      //      this.users = data;
+      //    }
+      //  ); 
+      // }
+    this.getUsers()
+    
+
   }
+
+  // ngAfterViewInit() {
+  //   this.users = this.getUser;
+  //   console.log(this.getUser)
+  // }
 
   getUsers() {
     this.userService.getCustomers().subscribe(
       data => {
         console.log(data)
         this.users = data
-        this.userId = data.length + 1 
+        this.userId = data.length + 1;
       }
     )
   }
-//  PEBARUVANJE NIS BAZATA SO RUTER
+
+  //  PEBARUVANJE NIS BAZATA SO RUTER
   // searchUsers() {
   //   this.userService.searchValue(this.search).subscribe(
   //     data => {
@@ -44,7 +61,8 @@ export class TableComponent {
   //   )
   // }
 
-  
+
+
 }
 
 

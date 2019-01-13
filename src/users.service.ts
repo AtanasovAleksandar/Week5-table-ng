@@ -9,6 +9,7 @@ import { HttpClient } from "@angular/common/http";
 export class UsersService {
 
   dataUrl = 'http://localhost:3000/users';
+  newData: any;
  
   constructor(private http: HttpClient) { }
 
@@ -32,4 +33,8 @@ export class UsersService {
   searchValue(search) {
     return this.http.get(this.dataUrl + '/?q=' + search);
   }
+
+  // getUpdateUsersId(users): any {
+  //   this.newData = users;
+  // }
 }

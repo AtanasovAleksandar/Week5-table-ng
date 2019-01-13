@@ -25,7 +25,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let person of users |filter:search | paginate: { itemsPerPage: 10, currentPage: p } let i = index ">
-          <th>{{person.id}}</th>
+          <th>{{i +1}}</th>
           <td>{{person.first_name}}</td>
           <td>{{person.address}}</td>
           <td>{{person.city}}</td>

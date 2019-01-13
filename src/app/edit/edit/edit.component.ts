@@ -8,39 +8,51 @@ import { UsersService } from 'src/users.service';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
-  userClicked: any;
+  userClicked: number;
   getOldUser: any;
+  nextUser: any
 
   first_name: String;
   address: String;
   city: String;
   pincode: String;
-  
+  getUsers: any;
+
 
   constructor(
     public userService: UsersService,
     public activeRouter: ActivatedRoute,
-    public router: Router) { 
-    
+    public router: Router) {
+
     this.activeRouter.params.subscribe(
       params => {
         console.log(params.edit);
         this.userClicked = params.edit
       })
-      this.getUser()
-    }
+    this.getUser()
+  }
 
   ngOnInit() {
-    
+
   }
 
   getUser() {
     this.userService.getCustomers().subscribe(
       data => {
-        console.log(data[this.userClicked]);
-        this.getOldUser = data[this.userClicked-1];
+        this.getUsers = data;
+
+        for (var i = 1; i < this.getUsers.length; i++) {
+         let id = i-1;
+          if (this.getUsers[i].id == this.userClicked) {
+            this.getOldUser = this.getUsers[i];
+          }
+        }
+
+        console.log(this.getOldUser);
         this.writeValuesToInputs()
       })
+
+    
   }
 
   writeValuesToInputs() {
@@ -51,7 +63,8 @@ export class EditComponent implements OnInit {
   }
 
   updateUserChanges() {
-    let newUserValues:any = { 'id': '', 'first_name': '', 'address': '', 'city': '', 'pincode': '' }
+    let newUserValues: any = { 'id': '', 'first_name': '', 'address': '', 'city': '', 'pincode': '' }
+
 
     newUserValues.first_name = this.first_name;
     newUserValues.address = this.address;
@@ -70,15 +83,20 @@ export class EditComponent implements OnInit {
     if (confirm('Are you sure you want to delete this user from the database?')) {
       this.userService.deleteUser(this.userClicked).subscribe(
         data => {
-            console.log('user Deleted')
-           console.log(data)
-            this.router.navigate(['Customers']);
+          console.log('user Deleted')
+          console.log(data, this.getUsers)
+
+          // this.userService.getUpdateUsersId(this.getUsers).subscribe();
+          this.router.navigate(['Customers']);
         }
       )
-  } else {
+
+    } else {
       // Do nothing!
+    }
+
   }
-    
-  }
+
+
 
 }

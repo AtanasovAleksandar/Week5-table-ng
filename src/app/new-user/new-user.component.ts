@@ -41,7 +41,7 @@ export class NewUserComponent implements OnInit {
     this.userPinCode = this.pinCode;
 
     
-    this.user.id = this.index;
+    this.user.id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     this.user.first_name = this.userName;
     this.user.address = this.userAddress
     this.user.city = this.userCity;
